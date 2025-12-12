@@ -1834,6 +1834,7 @@ class OcnModel:
     def __post_init__(self):
         self.grid = rt.Grid(**self.grid_kwargs)
         self.spec = _load_models_yaml(config.paths.models_yaml, self.model_name)
+        self.cdr_list = self.cdr_list
    
     @property
     def input_data_dir(self) -> Path:
