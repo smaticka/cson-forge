@@ -63,3 +63,5 @@ roms-marbl:
       source:
         name: DAI
         climatology: false
+
+    cdr: {}

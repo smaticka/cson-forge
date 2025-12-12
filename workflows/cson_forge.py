@@ -301,6 +301,9 @@ class ROMSInputs:
     obj: Dict[str, Any] = field(init=False)  # Maps input keys to roms_tools objects (Grid, InitialConditions, SurfaceForcing, etc.)
     bp_path: Path = field(init=False)
 
+    # cdr
+    cdr_list: Optional[list[rt.VolumeRelease]] = None
+
     def __post_init__(self):
         # Path to input directory
         self.input_data_dir = config.paths.input_data / f"{self.model_name}_{self.grid_name}"
@@ -632,8 +635,9 @@ class ROMSInputs:
             yaml_file=yaml_path,
         )
 
-    @register_input(name="cdr", order=80, label="Generating CDR forcing")
+    @register_input(name="cdr", order=90, label="Generating CDR forcing")
     def _generate_cdr_forcing(self, key: str = "cdr", cdr_list=None, **kwargs):
+        import pdb;pdb.set_trace()
         cdr_list = [] if cdr_list is None else cdr_list
         if not cdr_list:
             return
@@ -642,6 +646,7 @@ class ROMSInputs:
         extra = dict(
             start_time=self.start_time,
             end_time=self.end_time,
+            model_reference_date=self.start_time,
             releases=cdr_list,
         )
         input_args = self._build_input_args(key, extra=extra)
@@ -1819,6 +1824,7 @@ class OcnModel:
     end_time: object
     np_eta: int
     np_xi: int
+    cdr_list: list
     grid: object = field(init=False)
     spec: ModelSpec = field(init=False)
     src_data: Optional[source_data.SourceData] = field(init=False, default=None)
@@ -1910,6 +1916,7 @@ class OcnModel:
             end_time=self.end_time,
             np_eta=self.np_eta,
             np_xi=self.np_xi,
+            cdr_list=self.cdr_list,
             boundaries=self.boundaries,
             source_data=self.src_data,
             model_spec=self.spec,

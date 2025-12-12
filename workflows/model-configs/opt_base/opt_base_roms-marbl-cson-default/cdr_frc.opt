@@ -1,11 +1,11 @@
       ! ****************************************************************
       ! user inputs
 
-      logical,parameter,public :: cdr_source  = .false.  ! Should be false if not using CDR forcing
+      logical,parameter,public :: cdr_source  = {{ CDR_SOURCE }}  ! Should be false if not using CDR forcing
 
-      character(len=60) :: cdr_file = 'cdr_release.nc'   ! NetCDF forcing file and variable names
+      character(len=60) :: cdr_file = {{ CDR_FILE }}   ! NetCDF forcing file and variable names
 
-      integer,parameter,public :: ncdr_parm=1   !! number of discrete CDR releases; only used with PARAMETERIZED or 3D FORCING
+      integer,parameter,public :: ncdr_parm= {{ NCDR }}   !! number of discrete CDR releases; only used with PARAMETERIZED or 3D FORCING
 
       ! SET ONLY ONE OF THE FOLLOWING FORCING TYPES TO BE TRUE ***********************************
       logical,public                     :: forcing_depth_profiles = .false.     ! T if this file contains depth profiles
@@ -18,7 +18,7 @@
 
 
       ! PARAMETERIZED VERTICAL PROFILES ********************************
-      logical,parameter,public :: cdr_volume  = .false.  ! Set to .false. if you want a tracer flux but no added water.
+      logical,parameter,public :: cdr_volume  = {{ CDR_VOLUME }}  ! Set to .false. if you want a tracer flux but no added water.
                                                          ! If .true., read in volume flux and tracer concentration, and
                                                          ! multiply together to get tracer flux.
                                                          ! Set to false if you want to read in a vertical profile(s).
