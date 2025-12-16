@@ -302,7 +302,7 @@ class ROMSInputs:
     bp_path: Path = field(init=False)
 
     # cdr
-    cdr_list: Optional[list[rt.VolumeRelease]] = None
+    cdr_list: Optional[list[dict]] = None
 
     def __post_init__(self):
         # Path to input directory
