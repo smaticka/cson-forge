@@ -1824,9 +1824,9 @@ class OcnModel:
     end_time: object
     np_eta: int
     np_xi: int
-    cdr_list: list
     grid: object = field(init=False)
     spec: ModelSpec = field(init=False)
+    cdr_list: Optional[list[dict]] = None
     src_data: Optional[source_data.SourceData] = field(init=False, default=None)
     inputs: Optional[ROMSInputs] = field(init=False, default=None)
     executable: Optional[Path] = field(init=False, default=None)
