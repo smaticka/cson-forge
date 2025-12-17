@@ -3,7 +3,7 @@
 
       logical,parameter,public :: cdr_source  = {{ CDR_SOURCE }}  ! Should be false if not using CDR forcing
 
-      character(len=60) :: cdr_file = {{ CDR_FILE }}   ! NetCDF forcing file and variable names
+      character(len=60) :: cdr_file = 'roms_cdr.nc'   ! NetCDF forcing file and variable names
 
       integer,parameter,public :: ncdr_parm= {{ NCDR }}   !! number of discrete CDR releases; only used with PARAMETERIZED or 3D FORCING
 

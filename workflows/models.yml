@@ -64,4 +64,5 @@ roms-marbl:
         name: DAI
         climatology: false
 
-    cdr: {}
+    cdr:
+      enable: true

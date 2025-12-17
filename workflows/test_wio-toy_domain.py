@@ -81,7 +81,7 @@ inputs = ocn.generate_inputs(clobber=True)
 parameters = {
     "param.opt": dict(NP_XI=np_xi, NP_ETA=np_eta, NX=ocn.grid.nx, NY=ocn.grid.ny, NK=ocn.grid.N),
     "river_frc.opt": dict(nriv=inputs["rivers"].ds.sizes["nriver"]),
-    "cdr_frc.opt": dict(CDR_SOURCE='.true.', CDR_FILE="'roms_cdr.nc'", NCDR=2, CDR_VOLUME='.true.'),
+    "cdr_frc.opt": dict(CDR_SOURCE='.true.', NCDR=2, CDR_VOLUME='.true.'),
 }
 
 # run a simulate
